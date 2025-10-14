@@ -1,0 +1,452 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  --accent: #ff4f9a;
+  --text: #333;
+  --bg1: #ff7ab8;
+  --bg2: #ffd1e8;
+  --bg3: #fff0f6;
+  --max-width: 900px;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3), var(--bg2));
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.logo {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+}
+
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 3rem 1rem;
+  text-align: left;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  max-width: var(--max-width);
+}
+
+.avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  flex: 1 1 300px;
+}
+
+.about-text h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #e63f86;
+  transform: translateY(-2px);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* --- Animations --- */
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.fade-up:nth-of-type(1) {
+  animation-delay: 0.2s;
+}
+
+.fade-up:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Resume Page */
+.resume-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(6px);
+}
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.resume-header h2 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.resume-entry {
+  margin-bottom: 1.5rem;
+}
+
+.resume-entry h4 {
+  margin: 0.2rem 0;
+  color: var(--accent);
+}
+
+.resume-entry ul {
+  margin: 0.4rem 0 0 1.2rem;
+}
+
+.resume-entry li {
+  margin-bottom: 0.4rem;
+  text-align: justify;
+}
+
+section h3 {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.2rem;
+  margin-top: 2rem;
+}
+
+/* Fullscreen Project Showcase — Refined */
+.projects-scroll {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.project-block {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.project-banner {
+  width: 100%;
+  height: 70vh;
+  object-fit: contain;
+  background: #fff;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-content {
+  max-width: 850px;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.project-content h2 {
+  color: var(--accent);
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.project-content p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.project-content strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .project-banner {
+    height: 50vh;
+  }
+
+  .project-content {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .project-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .project-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Text-only project section */
+.no-image {
+  background: linear-gradient(180deg, #fff7fa 0%, #fff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.no-image .project-content {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.project-link {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+  color: #e63f86;
+}

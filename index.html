@@ -1,87 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-        rel="stylesheet">
-    <title>MI Dev Works</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bradley Clifton | About Me</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<div class="container">
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Bradley Clifton</h1>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <body>
-        <header id="header">
-            <h3 id="header-title">Michigan Dev Works</h3>
-            <nav id="nav-bar">
-                <ul>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#work" class="nav-link">Work</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="about">
-                <h1>Hi, I am Bradley</h1>
-                <p>a software developer based in Michigan. Currently, I am pursuing a Computer Science degree at the
-                    University of Michigan.</p>
-            </section>
-            <section id="work">
-                <h2>These are some of my projects</h2>
-                <div id="work-container">
-                    <div class="card">
-                        <h3 class="card-title">Weather App</h3>
-                        <p class="card-description">React-based application that allows users to check
-                            the current weather conditions for any location. It provides real-time weather data such as
-                            temperature, precipitation, wind speed, and more. The app utilizes APIs to fetch the weather
-                            data and displays it in a user-friendly interface.</p>
-                        <p class="card-availability">
-                            <a href="https://github.com/bjclifton/weather-app" target="_blank">GitHub</a>
-                        </p>
-                    </div>
-                    <div class="card">
-                      <h3 class="card-title">Real-Time Messaging Board</h3>
-                      <p class="card-description">Node.js application that serves as a real-time messaging board. It uses Socket.IO to enable real-time communication between users, allowing them to post messages instantly. The app features a user-friendly interface, supporting message broadcasting and real-time updates.
-                      </p>
-                      <p class="card-availability">
-                          <a href="https://github.com/bjclifton/message-board" target="_blank">GitHub</a>
-                      </p>
-                  </div>
-                    <div class="card">
-                        <h3 class="card-title">Pipelined Datapath Simulator</h3>
-                        <p class="card-description">C++ program that simulates a pipelined implementation of the LC-2K
-                            architecture with cycle-accurate behavior. It tracks instruction execution in the pipeline,
-                            monitors register and memory states, and demonstrates data forwarding and branch prediction
-                            effects on program execution.</p>
-                        <p class="card-availability">Source code available upon request</p>
-                    </div>
-                </div>
-            </section>
-            <section id="contact">
-                <h2>Let's Connect...</h2>
-                <p>If you have any questions or would like to collaborate on a project, feel free to reach out to me.
-                </p>
-                <div id="contact-info-container">
-                    <div class="contact-info">
-                        <img src="github.png" alt="GitHub Logo">
-                        <p><a href="https://github.com/bjclifton">GitHub</a></p>
-                    </div>
-                    <div class="contact-info">
-                        <img src="linkedin.png" alt="LinkedIn Logo">
-                        <p><a href="https://www.linkedin.com/in/bclifto/">LinkedIn</a></p>
-                    </div>
-                    <div class="contact-info">
-                        <img src="email.png" alt="Email Logo">
-                        <p><a href="mailto:your-email@example.com">Email</a></p>
-                    </div>
-            </section>
-        </main>
-    </body>
-</div>
+  <main class="about-container fade-in">
+    <section class="about">
+      <img src="avatar.jpg" alt="Avatar" class="avatar fade-up" />
+      <div class="about-text fade-up">
+        <h2>Hi, I'm Bradley</h2>
+        <p>
+          I'm a Computer Science student at the University of Michigan, passionate about systems, networking,
+          and building reliable software. I've interned with Amazon (eero) and National Heritage Academies,
+          where I worked on embedded systems and enterprise app integrations.
+        </p>
+        <p>
+          I enjoy low-level programming, automating things, and creating tools that make technology more
+          accessible. Outside of tech, I love playing bluegrass guitar, solving Rubik’s Cubes, and exploring
+          philosophy.
+        </p>
+        <a href="projects.html" class="btn">See My Work</a>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <p>© 2025 Bradley Clifton | <a href="https://github.com/bjclifton" target="_blank">GitHub</a></p>
+  </footer>
+</body>
 </html>
-

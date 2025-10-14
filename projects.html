@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Bradley Clifton</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Bradley Clifton</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="projects-scroll fade-in">
+
+    <section id="tcp" class="project-block fade-up">
+      <img src="images/tcp.png" alt="TCP Implementation" class="project-banner" />
+      <div class="project-content">
+        <h2>TCP Protocol Implementation</h2>
+        <p>
+          Built a version of TCP in C++, implementing connection setup, retransmission, and congestion control.
+          The project deepened my understanding of reliable transport, packet sequencing, and flow control.
+        </p>
+        <p><strong>Skills:</strong> C++, Networking, Socket Programming</p>
+      </div>
+    </section>
+
+    <section id="iperf" class="project-block fade-up">
+      <img src="images/iperfer.png" alt="Network Performance Tool" class="project-banner" />
+      <div class="project-content">
+        <h2>Network Performance Tool (iPerf Clone)</h2>
+        <p>
+          Developed a command-line tool to measure network throughput and latency between two endpoints.
+          Supports concurrent TCP and UDP testing with bandwidth and latency reporting.
+        </p>
+        <p><strong>Skills:</strong> C++, Linux, Multithreading</p>
+      </div>
+    </section>
+
+    <section id="certtool" class="project-block fade-up">
+      <img src="images/certtool.png" alt="Certificate Automation Tool" class="project-banner" />
+      <div class="project-content">
+        <h2>Certificate Automation Tool</h2>
+        <p>
+          Created a system to automatically renew and distribute SSL certificates across enterprise apps via REST APIs.
+          The tool improved security and reduced manual overhead for engineers managing 30+ certificates.
+        </p>
+        <p><strong>Skills:</strong> .NET/C#, REST APIs, Automation, Enterprise Security</p>
+      </div>
+    </section>
+<section id="spark" class="project-block fade-up no-image">
+  <div class="project-content">
+    <h2>SPARK Electric Racing</h2>
+    <p>
+      Contributed to the software system for an electric racing motorcycle as part of the
+      SPARK Electric Racing team. Focused on embedded display systems and data acquisition,
+      developing tools for real-time telemetry and post-ride performance analysis.
+    </p>
+    <p>
+      Integrated CAN bus communication with a custom display interface built in Qt C++,
+      enabling reliable in-race feedback for the engineering team.
+    </p>
+    <p><strong>Skills:</strong> Qt, C++, CAN Bus, Embedded Systems</p>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Bradley Clifton</p>
+  </footer>
+</body>
+</html>

@@ -190,10 +190,41 @@ table {
 :root {
   --accent: #ff4f9a;
   --text: #333;
-  --bg1: #ff7ab8;
-  --bg2: #ffd1e8;
-  --bg3: #fff0f6;
+  --bg1: #ffaed4;
+  --bg2: #ff8cc5;
+  --bg3: #ffaccd;
   --max-width: 900px;
+}
+/* Container to align buttons side-by-side */
+.button-container {
+  display: flex;
+  gap: 1rem; /* Space between the buttons */
+  margin-top: 1.5rem;
+  flex-wrap: wrap; /* Wraps buttons if screen is too small */
+}
+
+/* Keep your existing .btn style for the primary button */
+/* ... existing .btn code ... */
+
+/* New style for the secondary button (Outline style) */
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  box-sizing: border-box; /* Ensures border doesn't mess up sizing */
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Mobile tweak: Center buttons if on a small screen */
+@media (max-width: 850px) {
+  .button-container {
+    justify-content: center;
+  }
 }
 
 body {
@@ -250,7 +281,10 @@ header {
   display: flex;
   gap: 1.5rem;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .nav-links a {
   text-decoration: none;
   color: var(--text);
@@ -262,39 +296,109 @@ header {
   color: var(--accent);
 }
 
+/* --- Updated About Page Styles --- */
+
 .about-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  padding: 3rem 1rem;
-  text-align: left;
+  /* Adjust this if you want it to scroll, otherwise it stays fixed */
+  min-height: calc(100vh - 70px);
+  padding: 0 2rem;
 }
 
 .about {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
-  max-width: var(--max-width);
+  flex-direction: row; /* Puts image and text side-by-side */
+  align-items: center; /* Vertically centers them */
+  justify-content: center;
+  gap: 4rem; /* Big space between image and text */
+  max-width: 1000px;
+  width: 100%;
 }
 
+.about-visual {
+  flex: 0 0 auto; /* Prevents image from squishing */
+}
+
+/* Make the avatar slightly larger for this layout */
 .avatar {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%; /* Circular */
   object-fit: cover;
   border: 4px solid var(--accent);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.1); /* Adds a stylized shadow */
 }
 
 .about-text {
-  flex: 1 1 300px;
+  flex: 1; /* Takes up remaining space */
+  text-align: left; /* The Left Alignment you asked for */
+  color: var(--text);
 }
 
 .about-text h2 {
-  margin-top: 0;
+  font-size: 3rem;
   color: var(--accent);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  max-width: 600px; /* Prevents lines from getting too long to read */
+}
+
+/* Makes the first paragraph stand out */
+.about-text .intro {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+/* Styling the list to look clean */
+.interest-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.interest-list li {
+  font-weight: 600;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Responsive: Stack them on mobile */
+@media (max-width: 850px) {
+  .about {
+    flex-direction: column;
+    text-align: center; /* Revert to center on mobile for balance */
+    padding-bottom: 3rem;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .interest-list {
+    align-items: center;
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .btn {
@@ -412,94 +516,283 @@ section h3 {
   margin-top: 2rem;
 }
 
-/* Fullscreen Project Showcase — Refined */
-.projects-scroll {
-  width: 100%;
-  overflow-x: hidden;
+/* --- NEW Project Grid Styles --- */
+
+.projects-container {
+  max-width: var(--max-width);
+  margin: 3rem auto;
+  padding: 0 1rem;
 }
 
-.project-block {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 4rem;
-}
-
-.project-banner {
-  width: 100%;
-  height: 70vh;
-  object-fit: contain;
-  background: #fff;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-}
-
-.project-content {
-  max-width: 850px;
-  padding: 3rem 1.5rem 4rem;
+.page-title {
   text-align: center;
+  color: var(--accent);
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+.project-grid {
+  display: grid;
+  /* Creates a responsive grid: 2 columns above 600px, 1 column below */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  /* Style as a clickable button to launch the modal */
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 0;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-image-wrapper {
+  /* **CRITICAL for uniform images** */
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  overflow: hidden;
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 100%;
+  /* This ensures the image covers the fixed height/width, cropping as needed */
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.4s;
+}
+
+.project-thumbnail2 {
+  width: 200%;
+  height: 100%;
+  /* This ensures the image covers the fixed height/width, cropping as needed */
+  object-fit: contain;
+  object-position: 18% 50%;
+  transition: transform 0.4s;
+}
+
+.project-card:hover .project-thumbnail {
+  transform: scale(1.05);
+}
+
+.project-card h3 {
+  color: var(--text);
+  font-size: 1.3rem;
+  padding: 1rem 1rem 0.5rem;
+  margin: 0;
+}
+
+.card-tag {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0 1rem 1.5rem;
+  margin: 0;
+}
+
+
+
+
+
+.no-image-placeholder {
+  font-style: italic;
+  color: #888;
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+}
+
+/* --- Modal Styles for Project Details --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker backdrop */
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  /* Flexbox centering */
+  display: none; /* JS toggles this to flex */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 40px; /* Increased padding for breathing room */
+  border-radius: 16px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: modalOpen 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalOpen {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.close-button {
+  color: #888;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+  z-index: 10;
+  line-height: 1;
+}
+
+.close-button:hover {
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+/* Modal Internal Typography */
+#modal-details {
+  text-align: left; /* Default to left align for readability */
+}
+
+/* Main Title */
+#modal-details h2 {
+  color: var(--accent);
+  font-size: 2.2rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 2px solid var(--bg2);
+  padding-bottom: 1rem;
+}
+
+/* Sub-headers (Key Technical Aspects, etc.) */
+#modal-details h3 {
+  color: var(--text);
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+/* Small accent line before sub-headers */
+#modal-details h3::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 24px;
+  background-color: var(--accent);
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+#modal-details p {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 1rem;
   line-height: 1.7;
 }
 
-.project-content h2 {
+/* Specific override for the SSL Cert project inside the modal */
+#modal-details #certtool-full img {
+  max-height: none;   /* Removes the 400px height limit */
+  height: auto;       /* Let the height adjust naturally */
+  object-fit: contain; /* Ensures the full image is shown */
+}
+
+#modal-details img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover; /* Keep this */
+  /* ADD THIS LINE to anchor the image to the top */
+  object-position: top center;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: block;
+}
+
+/* List Styling inside Modal */
+#modal-details ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+#modal-details li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem; /* Space for bullet */
+  position: relative;
+  line-height: 1.6;
+  color: #333;
+}
+
+#modal-details li strong {
+  color: var(--accent); /* Highlights the key terms */
+  font-weight: 700;
+}
+
+/* Custom Bullet Points */
+#modal-details li::before {
+  content: '→';
   color: var(--accent);
-  font-size: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  letter-spacing: 0.5px;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
-.project-content p {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 1rem;
+/* Skills Section at bottom */
+.skills-list {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  text-align: center !important;
+  font-size: 0.95rem !important;
+  color: #666 !important;
 }
 
-.project-content strong {
+.skills-list strong {
   color: var(--accent);
-  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin-right: 5px;
 }
 
+.hidden {
+  display: none !important;
+}
+
+/* Responsive Tweaks */
 @media (max-width: 700px) {
-  .project-banner {
-    height: 50vh;
+  .modal-content {
+    padding: 20px;
+    width: 95%;
   }
-
-  .project-content {
-    padding: 2rem 1rem 3rem;
-  }
-
-  .project-content h2 {
+  #modal-details h2 {
     font-size: 1.6rem;
   }
-
-  .project-content p {
-    font-size: 1rem;
-  }
-}
-
-/* Text-only project section */
-.no-image {
-  background: linear-gradient(180deg, #fff7fa 0%, #fff 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.no-image .project-content {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-.project-link {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.project-link:hover {
-  text-decoration: underline;
-  color: #e63f86;
 }

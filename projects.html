@@ -9,7 +9,7 @@
 <body>
   <header>
     <nav class="navbar" aria-label="Main navigation">
-      <h1 class="logo">Bradley Clifton</h1>
+      <h1 class="logo"><a href="index.html">Bradley Clifton</a></h1>
       <ul class="nav-links">
         <li><a href="index.html">About</a></li>
         <li><a href="resume.html">Resume</a></li>
@@ -18,63 +18,196 @@
     </nav>
   </header>
 
-  <main class="projects-scroll fade-in">
+  <main class="projects-container fade-in">
+    <h2 class="page-title">Featured Projects</h2>
 
-    <section id="tcp" class="project-block fade-up">
-      <img src="images/tcp.png" alt="Screenshot of TCP protocol simulator interface" class="project-banner" />
-      <div class="project-content">
-        <h2>TCP Protocol Implementation</h2>
-        <p>
-          Built a version of TCP in C++, implementing connection setup, retransmission, and congestion control.
-          The project deepened my understanding of reliable transport, packet sequencing, and flow control.
-        </p>
-        <p><strong>Skills:</strong> C++, Networking, Socket Programming</p>
+    <div class="project-grid">
+
+      <button class="project-card fade-up" data-project="tcp">
+        <div class="card-image-wrapper">
+          <img src="images/tcp.png" alt="Screenshot of TCP protocol simulator interface" class="project-thumbnail" />
+        </div>
+        <h3>TCP Protocol Implementation</h3>
+        <p class="card-tag">C++, Networking</p>
+      </button>
+
+      <button class="project-card fade-up" data-project="iperf" style="animation-delay: 0.3s;">
+        <div class="card-image-wrapper">
+          <img src="images/iperfer.png" alt="Terminal output from custom iPerf network tool" class="project-thumbnail" />
+        </div>
+        <h3>Network Performance Tool (iPerf Clone)</h3>
+        <p class="card-tag">C++, Linux</p>
+      </button>
+
+      <button class="project-card fade-up" data-project="certtool" style="animation-delay: 0.5s;">
+        <div class="card-image-wrapper">
+          <img src="images/certtool.png" alt="Dashboard showing SSL certificate management automation" class="project-thumbnail2" />
+        </div>
+        <h3>Certificate Automation Tool</h3>
+        <p class="card-tag">.NET/C#, Automation</p>
+      </button>
+
+      <button class="project-card fade-up no-image-card" data-project="spark" style="animation-delay: 0.7s;">
+        <div class="card-image-wrapper">
+          <img src="images/spark.png" alt="SPARK Electric Racing motorcycle" class="project-thumbnail" />
+        </div>
+        <h3>SPARK Electric Racing</h3>
+        <p class="card-tag">Embedded Systems, Qt C++</p>
+      </button>
+
       </div>
-    </section>
-
-    <section id="iperf" class="project-block fade-up">
-        <img src="images/iperfer.png" alt="Terminal output from custom iPerf network tool" class="project-banner" />
-      <div class="project-content">
-        <h2>Network Performance Tool (iPerf Clone)</h2>
-        <p>
-          Developed a command-line tool to measure network throughput and latency between two endpoints.
-          Supports concurrent TCP and UDP testing with bandwidth and latency reporting.
-        </p>
-        <p><strong>Skills:</strong> C++, Linux, Multithreading</p>
-      </div>
-    </section>
-
-    <section id="certtool" class="project-block fade-up">
-      <img src="images/certtool.png" alt="Dashboard showing SSL certificate management automation" class="project-banner"/>
-      <div class="project-content">
-        <h2>Certificate Automation Tool</h2>
-        <p>
-          Created a system to automatically renew and distribute SSL certificates across enterprise apps via REST APIs.
-          The tool improved security and reduced manual overhead for engineers managing 30+ certificates.
-        </p>
-        <p><strong>Skills:</strong> .NET/C#, REST APIs, Automation, Enterprise Security</p>
-      </div>
-    </section>
-<section id="spark" class="project-block fade-up no-image">
-  <div class="project-content">
-    <h2>SPARK Electric Racing</h2>
-    <p>
-      Contributed to the software system for an electric racing motorcycle as part of the
-      SPARK Electric Racing team. Focused on embedded display systems and data acquisition,
-      developing tools for real-time telemetry and post-ride performance analysis.
-    </p>
-    <p>
-      Integrated CAN bus communication with a custom display interface built in Qt C++,
-      enabling reliable in-race feedback for the engineering team.
-    </p>
-    <p><strong>Skills:</strong> Qt, C++, CAN Bus, Embedded Systems</p>
-  </div>
-</section>
-
   </main>
 
   <footer>
     <p>© 2025 Bradley Clifton</p>
   </footer>
+
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div id="modal-details">
+
+
+      </div>
+    </div>
+  </div>
+
+<script>
+    const modal = document.getElementById("project-modal");
+    const closeBtn = document.querySelector(".close-button");
+    const modalDetails = document.getElementById("modal-details");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    const allDetailSections = document.querySelectorAll(".project-detail-content");
+
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const projectId = card.getAttribute('data-project');
+        const detailContent = document.getElementById(`${projectId}-full`);
+
+
+        modalDetails.innerHTML = '';
+
+
+        const clonedContent = detailContent.cloneNode(true);
+        clonedContent.classList.remove('hidden');
+        modalDetails.appendChild(clonedContent);
+
+
+        modal.style.display = "flex";
+      });
+    });
+
+
+    const closeModal = () => {
+        modal.style.display = "none";
+
+        modalDetails.innerHTML = '';
+    };
+
+    closeBtn.onclick = closeModal;
+
+
+    window.onclick = (event) => {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+</script>
+<section id="tcp-full" class="project-detail-content hidden">
+  <h2>TCP Protocol Implementation</h2>
+  <img src="images/tcp.png" alt="Screenshot of TCP protocol simulator interface" />
+
+  <p>
+    This project involved building a robust, simulated version of the <strong>Transmission Control Protocol (TCP)</strong> from the ground up to provide deep insight into reliable transport layer operations.
+  </p>
+
+  <h3>Key Technical Aspects</h3>
+  <ul>
+    <li><strong>Connection Management:</strong> Implemented the <strong>three-way handshake</strong> for connection establishment and termination.</li>
+    <li><strong>Reliability:</strong> Developed <strong>selective repeat</strong> mechanisms for efficient packet retransmission and error correction.</li>
+    <li><strong>Flow Control:</strong> Integrated a <strong>sliding window</strong> implementation to prevent buffer overflow and manage data flow between sender and receiver.</li>
+    <li><strong>Congestion Control:</strong> Successfully implemented a simplified congestion control algorithm (similar to Tahoe/Reno) that dynamically adjusts the send rate based on network feedback.</li>
+  </ul>
+
+  <h3>Impact</h3>
+  <p>
+    This project solidified my understanding of fundamental network reliability engineering principles, focusing on the core challenges of sequencing, acknowledgment, and resource management.
+  </p>
+
+  <p class="skills-list">
+    <strong>Skills:</strong> C++, Networking, Socket Programming, Reliable Transport
+  </p>
+</section>
+
+<section id="iperf-full" class="project-detail-content hidden">
+  <h2>Network Performance Tool (iPerf Clone)</h2>
+  <img src="images/iperfer.png" alt="Terminal output from custom iPerf network tool" />
+
+  <p>
+    This <strong>command-line tool</strong> was developed to measure network throughput and latency, acting as both a client and a server to diagnose bandwidth limitations and latency issues.
+  </p>
+
+  <h3>Functionality and Implementation</h3>
+  <ul>
+    <li><strong>Protocol Support:</strong> Measures throughput using both <strong>TCP</strong> (for sustained transfer rates) and <strong>UDP</strong> (for analyzing packet loss and jitter).</li>
+    <li><strong>Concurrency:</strong> Supports <strong>multithreading</strong> to run concurrent connections, simulating real-world high-load scenarios.</li>
+    <li><strong>Low-Level Networking:</strong> Leverages <strong>Linux sockets</strong> and C++ for efficient, low-level network communication.</li>
+  </ul>
+
+  <h3>Result</h3>
+  <p>
+    The tool accurately calculates and reports essential metrics like <strong>bits per second (Mbps)</strong> and round-trip time (RTT), offering a fast and reliable way to benchmark network performance.
+  </p>
+
+  <p class="skills-list">
+    <strong>Skills:</strong> C++, Linux, Multithreading, Socket Programming
+  </p>
+</section>
+
+<section id="certtool-full" class="project-detail-content hidden">
+  <h2>Certificate Automation Tool</h2>
+  <img class="banana" src="images/certtool.png" alt="Dashboard showing SSL certificate management automation" />
+
+  <p>
+    <strong>The Challenge:</strong> Manual renewal and distribution of SSL/TLS certificates across over 30 enterprise services was inefficient, error-prone, and risked service downtime due to expiry.
+  </p>
+
+  <h3>The Solution</h3>
+  <ul>
+    <li><strong>Automated Lifecycle:</strong> Designed a robust <strong>.NET/C#</strong> backend service to fully automate the certificate lifecycle.</li>
+    <li><strong>Integration:</strong> Uses <strong>REST APIs</strong> to interface with external certificate authorities and internal application load balancers.</li>
+    <li><strong>Monitoring:</strong> Continuously monitors expiration dates and orchestrates the renewal, validation, and deployment process automatically.</li>
+  </ul>
+
+  <h3>Impact</h3>
+  <p>
+    By automating the process, the tool reduced the manual overhead for platform engineers by approximately <strong>80%</strong> and eliminated the risk of downtime, significantly improving the organization's security posture.
+  </p>
+
+  <p class="skills-list">
+    <strong>Skills:</strong> .NET/C#, REST APIs, Automation, Enterprise Security
+  </p>
+</section>
+
+<section id="spark-full" class="project-detail-content hidden">
+  <h2>SPARK Electric Racing</h2>
+  <img src="images/spark.png" alt="SPARK Electric Racing motorcycle" />
+
+  <p>
+    As a member of the SPARK Electric Racing team, I was responsible for developing and maintaining the <strong>on-board software systems</strong> for a high-performance electric racing motorcycle.
+  </p>
+
+  <h3>Key Contributions</h3>
+  <ul>
+    <li><strong>Rider Interface:</strong> Developed a custom graphical user interface (GUI) using <strong>Qt C++</strong> for the rider's display, showing real-time metrics such as battery state, motor temperature, and speed.</li>
+    <li><strong>Data Acquisition:</strong> Implemented <strong>CAN bus communication protocols</strong> to reliably interface with the motor controller and battery management system (BMS).</li>
+    <li><strong>Telemetry:</strong> Integrated a system to log telemetry data for post-ride performance analysis.</li>
+  </ul>
+
+  <p class="skills-list">
+    <strong>Skills:</strong> Qt, C++, CAN Bus, Embedded Systems, Real-Time Systems
+  </p>
+</section>
 </body>
 </html>
